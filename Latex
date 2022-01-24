@@ -1,0 +1,171 @@
+% HAW-Dokumentation
+% Für Laborberichte und Abschlussarbeiten
+
+\documentclass[11pt,a4paper,oneside]{scrartcl} % Dokumentenklasse
+% Userpages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{tabularx}
+\usepackage{blindtext}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage[left=25mm,top=3cm,right=20mm,bottom=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman} % Deutsche Literarur
+\usepackage{siunitx} % Einheitene
+\usepackage{lmodern} % Für das 'Antialiasing' der Schrift
+\usepackage{amsmath} % Für die Formeln, welche nummeriert werden usw.
+\usepackage{amssymb} %LATEX-Mathematik-Formatierungen und -Symbole
+\usepackage{amsfonts} %LATEX-Mathematik-Formatierungen und -Symbole
+\usepackage{dsfont} %für Mengensymbole
+\usepackage{float} % Für das genaue Platzieren von Grafiken und Tabellen mit der Option [H] dahinter.
+\usepackage{floatflt} %flt
+\usepackage{ulem} % Damit man mit \uline Sachen unterstreichen kann
+\usepackage{epstopdf} % Damit man EPS-Vektorgrafiken einbinden kann
+\usepackage{amssymb} % Für weitere Symbole
+\usepackage{listings} % Für Syntax-Highlighting mit \begin{lstlisting}
+\usepackage{color} % Für die Farben z.B. in den Listings
+\usepackage{xcolor}
+\usepackage{caption} % Für Zeilenumbrüche ect. in Bildunterschriften
+\usepackage[headsepline,footsepline]{scrlayer-scrpage} %Kopf- und Fußzeilen package
+\usepackage{subfigure}	%Um Bilder nebeneinander zu erzeugen
+\usepackage{pgfplots} % Diagramme zeichnen
+\usepackage{graphicx} % Bilder im Dokument einbinden
+\usepackage{scrlayer-scrpage} 
+\usepackage[headsepline,footsepline]{scrlayer-scrpage} %Kopf- und Fußzeilen package
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{hyperref}        % Reffeenzieren
+\usepackage[ngerman]{cleveref}
+
+% Lyb setting
+\bibliographystyle{unsrt}
+\usepackage{cite}
+
+
+%hawBib
+
+
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+
+\begin{document}
+\parindent 0pt					%Damit der Beginn eines Absatzes nicht eingerückt wird
+
+%  Kopf- und Fußzeilen:
+\pagestyle{scrheadings}   %freies einstellen der Kopf und Fußzeile
+\setlength{\headsep}{1.0cm}
+\ihead{\includegraphics[scale=2]{LogoTI.png}}
+\chead{Automatische Juniper Reports}
+\ohead{\today}
+
+ 	
+
+%%%%%%% TITELSEITE %%%%%%%
+
+\begin{titlepage}
+	\begin{figure}[H]
+		\begin{minipage}[b]{20mm}
+			\includegraphics[scale=0.6]{DECK.png}
+		\end{minipage}
+		\begin{minipage}[b]{2mm}
+			\includegraphics[width=1mm,height=20mm]{balken.png}
+		\end{minipage}
+		\begin{minipage}[b]{12 cm}
+			{\sffamily 
+			{\Large HAW Hamburg} \\
+			Fakultät TI\\
+			Technik und Informatik\\
+			Department Informations- und Elektrotechnik
+			}	
+		\end{minipage}	
+	\end{figure}
+
+	\vfill
+
+	\begin{center}
+		% Diplomarbeit oder Laborbericht
+		\noindent { \huge
+		Bachelor Projekt\\
+		}
+		\vspace{14mm}
+		% Titel
+		\noindent \textbf{\Large
+		Automatische Juniper Reports
+		 \\		  
+		}
+		\vspace{10mm}
+	
+		%\noindent {\large
+		%	Bachelorstudiengang Elektrotechnik und Informationstechnik
+		%}
+		%\vspace{10mm}
+	
+		\noindent {\large 
+			Hamburg, den \today
+		}
+	
+	\end{center}
+
+	\vfill
+
+	\noindent \textbf{Hasan Abdullah\\Mohammed Sammuor\\ Abdul Hamed Mohamd \\Mohammed Abuiriban} \\
+	\noindent \rule{\textwidth}{0.4mm} 
+%	\noindent{\textrm{abdulrahman.chakrouk@haw-hamburg.de}} \\
+%	\noindent{\textrm{Matr.-Nr. 2349824}} \\
+%	\noindent{\textrm{Fachsemester 6}} \\
+%	\noindent{\textrm{}} \\
+
+	\begin{tabbing}
+		\hspace{20em} \=  \kill
+		Betreuender Professor: \> Prof. Dr.-Ing.  Björn Ingo Lange
+		\\
+	\end{tabbing}
+
+	
+% Rückseite der Titelseite mit Zitat
+%\newpage 
+%\thispagestyle{empty}
+%\setcounter{page}{0}
+
+% wenn man Lust auf ein Zitat hat...
+% ... ansonsten auskommentieren
+%~\\ \vfill \noindent 
+%	A distributed system is one where the failure of some \\
+%	computer I've never heard of can keep me from getting my work done. \\
+%	\textit{-- Leslie Lamport}
+
+\end{titlepage}
+%%%%%%%% Inahaltsverzeichnis %%%%%%%%	
+\setcounter{page}{0}
+\tableofcontents %Inhaltzverzeichnis
+\newpage
+\section{Einleitung}
+
+Es soll ein Skript in Python geschrieben werden, das  das Reporting von Juniper so weit wie möglich automatisieren soll. Dabei sind verschiedene Montageteile zu berücksichtigen. Schließlich soll das Skript automatisch die Daten über das Intranet abfragen und leicht verständliche und lesbare Berichte im Excel-Format exportieren. Die Reports werden zur Veranschaulichung der zu ändernden Optiken oder Linecards erstellt. Außerdem bestehen die Reports aus Daten, die aktuell vom Rauter abgefragt werden. Aus den daten werden nur bestimmte Informationen verwendet, die für den endgültigen Bericht wieder benötigt weden.
+Dieser Vorgang muss auf Router von Juniper Networks anwendbar sein.
+
+
+
+\section{Vorbereitung}
+Für die Vorbereitung mussten wir (alle Projektbeteiligte) über die folgende Punkte recherchieren:\\
+ • Die unterschiedlichen Juniper Varianten \\
+ • Distribution\\ 
+ • Core\\
+ • POP\\
+ • Die Bestückung der Router \\
+ • Die Einzelheiten des finalen Reports \\
+ • Die Bedeutung der Router Ausgaben\\
+Dann haben wir alle die verschiedenen Arten von Routern als Hardware und wie man sie zusammenbaut und die Bedeutung der verschiedenen Komponenten gelernt, da diese
+Informationen später im Report vorkommen werden. 
+Danach haben wir uns mit den Linux-Shell-Befehlen und ihren Ausgaben vertraut
+gemacht. Schließlich wurden die Projektbeteiligte den Finale-Report studiert und auseinandergennomen.
+
+
+
+
+\end{document}	
